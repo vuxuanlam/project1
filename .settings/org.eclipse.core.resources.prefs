@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
 encoding//WebContent/bodycontent/authentication/login.jsp=UTF-8
+encoding//src/project1/dbconnect/PsqlConn.java=UTF-8
+encoding//src/project1/servlet/SessionLoginServlet.java=UTF-8

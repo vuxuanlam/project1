@@ -8,8 +8,6 @@ public class User {
 	private String name;
 	private String password;
 	private String email;
-	private int phoneNumber;
-	private Date birthday;
 	private boolean activate;
 	private boolean role;
 	private Date createAt;
@@ -54,27 +52,6 @@ public class User {
 
 		this.email = email;
 
-	}
-
-	public int getPhoneNumber() {
-
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(int phoneNumber) {
-
-		this.phoneNumber = phoneNumber;
-	}
-
-
-	public Date getBirthday() {
-
-		return birthday;
-	}
-
-	public void setBirthday(Date birthday ) {
-
-		this.birthday = birthday;
 	}
 
 	public boolean isRole() {

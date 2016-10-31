@@ -7,6 +7,11 @@
 <title>homepage</title>
 </head>
 <body>
+<h3>Hello: ${user.name}</h3>
 
+    User Name: <b><%
+String name = session.getValue("name").toString();
+    %></b>
+    <br />
 </body>
 </html>

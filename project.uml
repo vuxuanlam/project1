@@ -1,2 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_i3-HsJwBEeaVQ_ETpOoH9Q" name="NewModel"/>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_i3-HsJwBEeaVQ_ETpOoH9Q" name="NewModel">
+  <packagedElement xmi:type="uml:Actor" xmi:id="_yUNzQJwBEeaVQ_ETpOoH9Q" name="admin" isLeaf="true"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_0est0JwBEeaVQ_ETpOoH9Q" name="user"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_zJ2d8JwFEeaVQ_ETpOoH9Q" name="Electronic Clipboard" useCase="_6-pP8JwFEeaVQ_ETpOoH9Q _7Lv30JwFEeaVQ_ETpOoH9Q _7bBC4JwFEeaVQ_ETpOoH9Q _7udjUJwFEeaVQ_ETpOoH9Q _9SCO4JwFEeaVQ_ETpOoH9Q _ae6_0JwGEeaVQ_ETpOoH9Q _a6jL4JwGEeaVQ_ETpOoH9Q _bOJdUJwGEeaVQ_ETpOoH9Q _vmGN4JwGEeaVQ_ETpOoH9Q _v-Ny8JwGEeaVQ_ETpOoH9Q _Z5a0IJwIEeaVQ_ETpOoH9Q _aY17EJwIEeaVQ_ETpOoH9Q _aulhkJwIEeaVQ_ETpOoH9Q _fXhmIJwJEeaVQ_ETpOoH9Q _gIg-MJwJEeaVQ_ETpOoH9Q _goNK4JwJEeaVQ_ETpOoH9Q _sDBy8JwKEeaVQ_ETpOoH9Q _1gpj8JwKEeaVQ_ETpOoH9Q _2SQAAJwKEeaVQ_ETpOoH9Q">
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_6-pP8JwFEeaVQ_ETpOoH9Q" name="Authentication" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q">
+      <include xmi:id="_kk040JwGEeaVQ_ETpOoH9Q" addition="_ae6_0JwGEeaVQ_ETpOoH9Q"/>
+      <include xmi:id="_mbITIJwGEeaVQ_ETpOoH9Q" addition="_a6jL4JwGEeaVQ_ETpOoH9Q"/>
+      <include xmi:id="_pJ0uAJwGEeaVQ_ETpOoH9Q" addition="_bOJdUJwGEeaVQ_ETpOoH9Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_7Lv30JwFEeaVQ_ETpOoH9Q" name="Manage Post" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q">
+      <include xmi:id="_hPC94JwIEeaVQ_ETpOoH9Q" addition="_Z5a0IJwIEeaVQ_ETpOoH9Q"/>
+      <include xmi:id="_kKQx0JwIEeaVQ_ETpOoH9Q" addition="_aY17EJwIEeaVQ_ETpOoH9Q"/>
+      <include xmi:id="_cTkF4JwJEeaVQ_ETpOoH9Q" addition="_aulhkJwIEeaVQ_ETpOoH9Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_7bBC4JwFEeaVQ_ETpOoH9Q" name="Manage Profile" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q">
+      <include xmi:id="_2JKx8JwJEeaVQ_ETpOoH9Q" addition="_gIg-MJwJEeaVQ_ETpOoH9Q"/>
+      <include xmi:id="_3wnQ4JwJEeaVQ_ETpOoH9Q" addition="_fXhmIJwJEeaVQ_ETpOoH9Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_7udjUJwFEeaVQ_ETpOoH9Q" name="Search" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q">
+      <include xmi:id="_NwfBgJwKEeaVQ_ETpOoH9Q" addition="_goNK4JwJEeaVQ_ETpOoH9Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_9SCO4JwFEeaVQ_ETpOoH9Q" name="Comment" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q">
+      <include xmi:id="_94G-IJwKEeaVQ_ETpOoH9Q" addition="_1gpj8JwKEeaVQ_ETpOoH9Q"/>
+      <include xmi:id="__35roJwKEeaVQ_ETpOoH9Q" addition="_2SQAAJwKEeaVQ_ETpOoH9Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_ae6_0JwGEeaVQ_ETpOoH9Q" name="Signup" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q">
+      <include xmi:id="_VhNdwJwIEeaVQ_ETpOoH9Q" addition="_v-Ny8JwGEeaVQ_ETpOoH9Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_a6jL4JwGEeaVQ_ETpOoH9Q" name="Signin" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q">
+      <include xmi:id="_W6T-sJwIEeaVQ_ETpOoH9Q" addition="_vmGN4JwGEeaVQ_ETpOoH9Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_bOJdUJwGEeaVQ_ETpOoH9Q" name="Signout" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_vmGN4JwGEeaVQ_ETpOoH9Q" name="Verify userID and password" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_v-Ny8JwGEeaVQ_ETpOoH9Q" name="Verify  by mail" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_Z5a0IJwIEeaVQ_ETpOoH9Q" name="View Post" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_aY17EJwIEeaVQ_ETpOoH9Q" name="Creat Post" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_aulhkJwIEeaVQ_ETpOoH9Q" name="Edit/Delete Post" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_fXhmIJwJEeaVQ_ETpOoH9Q" name="Edit/Update Profile" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_gIg-MJwJEeaVQ_ETpOoH9Q" name="View Profile" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_goNK4JwJEeaVQ_ETpOoH9Q" name="Search in Post" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q">
+      <extend xmi:id="_vpnfIJwKEeaVQ_ETpOoH9Q" extendedCase="_sDBy8JwKEeaVQ_ETpOoH9Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_sDBy8JwKEeaVQ_ETpOoH9Q" name="Search By Tag" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_1gpj8JwKEeaVQ_ETpOoH9Q" name="Creat Comment" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q"/>
+    <packagedElement xmi:type="uml:UseCase" xmi:id="_2SQAAJwKEeaVQ_ETpOoH9Q" name="Edit/Update Comment" subject="_zJ2d8JwFEeaVQ_ETpOoH9Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_LfFxMJwLEeaVQ_ETpOoH9Q" memberEnd="_LfGYQJwLEeaVQ_ETpOoH9Q _LfG_UJwLEeaVQ_ETpOoH9Q">
+    <ownedEnd xmi:id="_LfGYQJwLEeaVQ_ETpOoH9Q" type="_7Lv30JwFEeaVQ_ETpOoH9Q" association="_LfFxMJwLEeaVQ_ETpOoH9Q"/>
+    <ownedEnd xmi:id="_LfG_UJwLEeaVQ_ETpOoH9Q" type="_yUNzQJwBEeaVQ_ETpOoH9Q" association="_LfFxMJwLEeaVQ_ETpOoH9Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_O5I2MJwLEeaVQ_ETpOoH9Q" memberEnd="_O5JdQJwLEeaVQ_ETpOoH9Q _O5KEUJwLEeaVQ_ETpOoH9Q">
+    <ownedEnd xmi:id="_O5JdQJwLEeaVQ_ETpOoH9Q" type="_yUNzQJwBEeaVQ_ETpOoH9Q" association="_O5I2MJwLEeaVQ_ETpOoH9Q"/>
+    <ownedEnd xmi:id="_O5KEUJwLEeaVQ_ETpOoH9Q" type="_7bBC4JwFEeaVQ_ETpOoH9Q" association="_O5I2MJwLEeaVQ_ETpOoH9Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_brZnwJwLEeaVQ_ETpOoH9Q" memberEnd="_brZnwZwLEeaVQ_ETpOoH9Q _braO0JwLEeaVQ_ETpOoH9Q">
+    <ownedEnd xmi:id="_brZnwZwLEeaVQ_ETpOoH9Q" type="_yUNzQJwBEeaVQ_ETpOoH9Q" association="_brZnwJwLEeaVQ_ETpOoH9Q"/>
+    <ownedEnd xmi:id="_braO0JwLEeaVQ_ETpOoH9Q" type="_7udjUJwFEeaVQ_ETpOoH9Q" association="_brZnwJwLEeaVQ_ETpOoH9Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_dcvpkJwLEeaVQ_ETpOoH9Q" memberEnd="_dcvpkZwLEeaVQ_ETpOoH9Q _dcw3sJwLEeaVQ_ETpOoH9Q">
+    <ownedEnd xmi:id="_dcvpkZwLEeaVQ_ETpOoH9Q" type="_yUNzQJwBEeaVQ_ETpOoH9Q" association="_dcvpkJwLEeaVQ_ETpOoH9Q"/>
+    <ownedEnd xmi:id="_dcw3sJwLEeaVQ_ETpOoH9Q" type="_9SCO4JwFEeaVQ_ETpOoH9Q" association="_dcvpkJwLEeaVQ_ETpOoH9Q"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_lO7IQJwSEeaVQ_ETpOoH9Q" memberEnd="_lO7IQZwSEeaVQ_ETpOoH9Q _lO7vUJwSEeaVQ_ETpOoH9Q">
+    <ownedEnd xmi:id="_lO7IQZwSEeaVQ_ETpOoH9Q" type="_fXhmIJwJEeaVQ_ETpOoH9Q" association="_lO7IQJwSEeaVQ_ETpOoH9Q"/>
+    <ownedEnd xmi:id="_lO7vUJwSEeaVQ_ETpOoH9Q" type="_fXhmIJwJEeaVQ_ETpOoH9Q" association="_lO7IQJwSEeaVQ_ETpOoH9Q"/>
+  </packagedElement>
+</uml:Model>
