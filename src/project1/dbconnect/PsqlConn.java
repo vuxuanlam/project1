@@ -18,7 +18,7 @@ public class PsqlConn {
 
 	public static Connection getPSQLConnection(String hostName, String dbName, String userName, String password)
 			throws ClassNotFoundException, SQLException {
-
+		Class.forName("org.postgresql.Driver");
 		String connectionURL = "jdbc:postgresql://localhost:5432/project1";
 		Connection conn = DriverManager.getConnection(connectionURL, userName, password);
 		return conn;

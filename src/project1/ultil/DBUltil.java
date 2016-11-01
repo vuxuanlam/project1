@@ -11,8 +11,8 @@ import project1.bean.User;
 public class DBUltil {
 	public static User findUser(Connection conn, String name, String password) throws SQLException {
 
-		String sql = "Select a.user_name, a.user_password from User a "
-				+ " where a.user_name = ? and a.user_password= ?";
+		String sql = "Select user_name, password from public.user "
+				+ " where user_name = ? and password= ?";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
 		pstm.setString(1, name);
@@ -30,7 +30,7 @@ public class DBUltil {
 
 	public static User findUser(Connection conn, String name) throws SQLException {
 
-		String sql = "Select a.user_name, a.user_password from User a " + " where a.user_name = ? ";
+		String sql = "Select user_name, user_password from User " + " where user_name = ? ";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
 		pstm.setString(1, name);

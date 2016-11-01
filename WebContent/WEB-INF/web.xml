@@ -8,29 +8,17 @@
 		<welcome-file>/bodycontent/authentication/login.jsp</welcome-file>
 	</welcome-file-list>
 	<servlet>
-		<servlet-name>sessionloginservlet</servlet-name>
-		<servlet-class>project1.servlet.SessionLoginServlet</servlet-class>
+		<servlet-name>homeservlet</servlet-name>
+		<servlet-class>project1.servlet.HomeServlet</servlet-class>
 	</servlet>
-	<servlet-mapping>
-		<servlet-name>sessionloginservlet</servlet-name>
-		<url-pattern>/sessionloginservlet</url-pattern>
-	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>logoutservlet</servlet-name>
 		<servlet-class>project1.servlet.LogoutServlet</servlet-class>
 	</servlet>
-	<servlet-mapping>
-		<servlet-name>logoutservlet</servlet-name>
-		<url-pattern>/logoutservlet</url-pattern>
-	</servlet-mapping>
-
-		<servlet>
+	<servlet>
 		<servlet-name>loginservlet</servlet-name>
 		<servlet-class>project1.servlet.LoginServlet</servlet-class>
 	</servlet>
-	<servlet-mapping>
-		<servlet-name>loginservlet</servlet-name>
-		<url-pattern>/loginservlet</url-pattern>
-	</servlet-mapping>
+
 </web-app>

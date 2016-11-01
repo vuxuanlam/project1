@@ -15,7 +15,7 @@
 				<h1 class="text-center login-title">Welcome to project 1</h1>
 				</br>
 				<div class="account-wall">
-					<form class="form-signin" method="POST" action="loginservlet">
+					<form class="form-signin" method="POST" action="login">
 						<input type="text" class="form-control" name="name"
 							 placeholder="Username" required autofocus>
 						</br> <input type="password" class="form-control" name="password"
