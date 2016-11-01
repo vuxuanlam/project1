@@ -19,6 +19,7 @@ import project1.ultil.*;
 public class LoginServlet extends HttpServlet {
 
 	Connection conn;
+
 	public LoginServlet() {
 		super();
 	}
@@ -28,8 +29,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+		response.setContentType("text/html;charset=UTF-8");
 
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
@@ -38,25 +38,19 @@ public class LoginServlet extends HttpServlet {
 		boolean isError = false;
 		String errorString = null;
 
-		if (name == null || password == null || name.length() == 0 || password.length() == 0) {
-			isError = true;
-			errorString = "Required username and password!";
-		} else {
-			try {
-				conn = DBConnect.getConnection();
-				user = DBUltil.findUser(conn, name, password);
-				if (user == null) {
-					isError = true;
-					errorString = "User Name or password invalid";
-				}
-			} catch (SQLException | ClassNotFoundException e) {
-				e.printStackTrace();
+		try {
+			conn = DBConnect.getConnection();
+			user = DBUltil.findUser(conn, name, password);
+			if (user == null) {
 				isError = true;
-				errorString = e.getMessage();
+				errorString = "User Name or password invalid";
 			}
-			finally {
-				DBConnect.closeQuietly(conn);
-			}
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+			isError = true;
+			errorString = e.getMessage();
+		} finally {
+			DBConnect.closeQuietly(conn);
 		}
 
 		if (isError) {

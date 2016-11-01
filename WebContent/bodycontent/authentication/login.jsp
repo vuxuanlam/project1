@@ -17,18 +17,18 @@
 				<div class="account-wall">
 					<form class="form-signin" method="POST" action="login">
 						<input type="text" class="form-control" name="name"
-							 placeholder="Username" required autofocus>
-						</br> <input type="password" class="form-control" name="password"
-							placeholder="Password"
-							required="required" pattern=".{6,20}"></br>
+							placeholder="Username" required autofocus> </br> <input
+							type="password" class="form-control" name="password"
+							placeholder="Password" required="required" pattern=".{6,20}"></br>
 						<button class="btn btn-lg btn-primary btn-block" type="submit">
 							Sign in</button>
 						</br> <label class="checkbox pull-left"> <input type="checkbox"
 							value="remember-me"> Remember me
-						</label> <a href="#" class="pull-right new-account">Create an account
+						</label> <a href="signup" class="pull-right new-account">Create an account
 						</a><span class="clearfix"></span>
 					</form>
 				</div>
+				<p style="color: red;">${errorString}</p>
 			</div>
 		</div>
 	</div>

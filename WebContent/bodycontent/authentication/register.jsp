@@ -9,7 +9,6 @@
 
 <title>User Data</title>
 </head>
-
 <body>
 	<div class="container">
 		<div class="row centered-form">

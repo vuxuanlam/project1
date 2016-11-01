@@ -20,5 +20,9 @@
 		<servlet-name>loginservlet</servlet-name>
 		<servlet-class>project1.servlet.LoginServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>registerservlet</servlet-name>
+		<servlet-class>project1.servlet.RegisterServlet</servlet-class>
+	</servlet>
 
 </web-app>
