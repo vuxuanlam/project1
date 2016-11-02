@@ -7,66 +7,39 @@
 	type="text/css" />
 <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 
-<title>User Data</title>
+<title>Register</title>
 </head>
 <body>
-	<div class="container">
-		<div class="row centered-form">
-			<div
-				class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">
-							<center>
-								<big> Sign up </big>
-							</center>
-						</h3>
-					</div>
-					<div class="panel-body">
-						<form role="form">
-							<div class="row">
-								<div class="col-xs-6 col-sm-6 col-md-6">
-									<div class="form-group">
-										<input type="text" name="first_name" id="first_name"
-											class="form-control input-sm" placeholder="First Name">
-									</div>
-								</div>
-								<div class="col-xs-6 col-sm-6 col-md-6">
-									<div class="form-group">
-										<input type="text" name="last_name" id="last_name"
-											class="form-control input-sm" placeholder="Last Name">
-									</div>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<input type="email" name="email" id="email"
-									class="form-control input-sm" placeholder="Email Address">
-							</div>
-
-							<div class="row">
-								<div class="col-xs-6 col-sm-6 col-md-6">
-									<div class="form-group">
-										<input type="password" name="password" id="password"
-											class="form-control input-sm" placeholder="Password">
-									</div>
-								</div>
-								<div class="col-xs-6 col-sm-6 col-md-6">
-									<div class="form-group">
-										<input type="password" name="password_confirmation"
-											id="password_confirmation" class="form-control input-sm"
-											placeholder="Confirm Password">
-									</div>
-								</div>
-							</div>
-
-							<input type="submit" value="Register"
-								class="btn btn-info btn-block">
-						</form>
-					</div>
+	<form class="form-horizontal" action="register" method="POST">
+		<h1 class="text-center signup-title">Register Form</h1>
+		<div class="col-sm-6 col-md-5 col-md-offset-4">
+			</br> </br>
+			<div id="legend"></div>
+			<div class="control-group">
+				<div class="controls">
+					<input type="text" class="form-control" name="name"
+						placeholder="UserName" required="required">
+					<p class="help-block">Username can contain any letters or
+						numbers, without spaces</p>
+					<input type="email" class="form-control" name="email"
+						placeholder="Email" required="required""></br>
+					<p class="help-block">Please provide your E-mail</p>
+					<input type="password" class="form-control" name="password"
+						placeholder="Password" required="required" pattern=".{6,20}">
+					<p class="help-block">Password should be at least 4 characters</p>
+					<input type="password" class="form-control" name="confirmpassword"
+						placeholder="ConfirmPasswor" required="required" pattern=".{6,20}">
+					<p class="help-block">Please confirm your password</p>
+					</br>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">
+						Register</button>
+					</br>
 				</div>
 			</div>
+			<p style="color: red;">${errorString}</p>
 		</div>
-	</div>
+		</div>
+	</form>
+
 </body>
 </html>

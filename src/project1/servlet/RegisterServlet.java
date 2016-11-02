@@ -27,47 +27,47 @@ public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
 
-		User user = null;
-		boolean isError = false;
+		User user = new User(name, password, email);
+
 		String errorString = null;
+
 		try {
 			conn = DBConnect.getConnection();
 			user = DBUltil.findUser(conn, name);
-			if (user == null) {
-				isError = true;
-				errorString = "User Name or password invalid";
+			if (user != null) {
+				errorString = ("Username already exists ");
+				request.setAttribute("errorString", errorString);
+				request.getRequestDispatcher("/bodycontent/authentication/register.jsp").forward(request, response);
+			} else {
+				user = new User();
+				user.setPassword(password);
+				user.setEmail(email);
+				user.setName(name);
+				DBUltil.insertUser(conn, user);
 			}
-		} catch (SQLException | ClassNotFoundException e) {
+			request.setAttribute("errorString", errorString);
+			request.setAttribute("user", user);
+			response.sendRedirect(request.getContextPath() + "/login");
+
+		} catch (ClassNotFoundException | SQLException e) {
+
 			e.printStackTrace();
-			isError = true;
 			errorString = e.getMessage();
 		} finally {
 			DBConnect.closeQuietly(conn);
 		}
-		if (isError) {
-			user = new User();
-			user.setName(name);
-			user.setPassword(password);
-			request.setAttribute("errorString", errorString);
-			request.setAttribute("user", user);
-			request.getRequestDispatcher("/bodycontent/authentication/register.jsp").forward(request, response);
-		} else {
-//			todo
-//			HttpSession session = request.getSession();
-//			MyUltil.storeLoginedUser(session, user);
-//			response.sendRedirect(request.getContextPath() + "/home");
-		}
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
+		response.setContentType("text/html;charset=UTF-8");
+		request.getRequestDispatcher("/bodycontent/authentication/register.jsp").forward(request, response);
 	}
 }

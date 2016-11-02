@@ -13,6 +13,15 @@ public class User {
 	private Date createAt;
 	private Date updateAt;
 
+	public User() {
+	}
+
+	public User(String name, String password, String email) {
+	       this.name = name;
+	       this.password = password;
+	       this.email = email;
+	   }
+
 	public int getUserId() {
 
 		return userId;

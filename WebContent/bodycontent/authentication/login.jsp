@@ -24,8 +24,8 @@
 							Sign in</button>
 						</br> <label class="checkbox pull-left"> <input type="checkbox"
 							value="remember-me"> Remember me
-						</label> <a href="signup" class="pull-right new-account">Create an account
-						</a><span class="clearfix"></span>
+						</label> <a href="register" class="pull-right new-account">Create an
+							account </a><span class="clearfix"></span>
 					</form>
 				</div>
 				<p style="color: red;">${errorString}</p>
