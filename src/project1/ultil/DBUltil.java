@@ -10,7 +10,8 @@ import project1.bean.User;
 public class DBUltil {
 	public static User findUser(Connection conn, String name, String password, Boolean isActive) throws SQLException {
 
-		String sql = "Select user_name, password, is_active from public.user " + " where user_name = ? and password= ? and is_active= ?";
+		String sql = "Select user_name, password, is_active from public.user "
+				+ " where user_name = ? and password= ? and is_active= ?";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
 		pstm.setString(1, name);
@@ -57,5 +58,16 @@ public class DBUltil {
 		pstm.setString(3, user.getEmail());
 		System.out.println(pstm);
 		pstm.executeUpdate();
+	}
+
+	public static void activateAccount(Connection conn, User user) throws SQLException {
+		String sql = "Update public.user set is_active =true where user_name=? ";
+
+		PreparedStatement pstm = conn.prepareStatement(sql);
+
+		pstm.setString(1, user.getName());
+		System.out.println(pstm);
+		pstm.executeUpdate();
+
 	}
 }

@@ -61,11 +61,11 @@ public class RegisterServlet extends HttpServlet {
 				DBUltil.insertUser(conn, user);
 				MailUltil.sendMail(smtpMS, to, from, pass, subject, content);
 				out.println("<html><body>");
-				out.println("<button id='myButton' class='float-left submit-button' >Home</button>");
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('waitting some minutes!!!');");
-				out.println("</script>");
-
+				out.println("<p><big>Register Successful !!!</big></br>");
+				out.println(
+						"<p1>Please Check Mail To Activate Account and Click OK to Come Back Login Form</p1></br></p>");
+				out.println("<a href='http://localhost:8080/project1/'>OK</a>");
+				out.println("</body></html>");
 			}
 			request.setAttribute("errorString", errorString);
 			request.setAttribute("user", user);
