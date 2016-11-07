@@ -8,19 +8,21 @@ import java.sql.SQLException;
 import project1.bean.User;
 
 public class DBUltil {
-	public static User findUser(Connection conn, String name, String password) throws SQLException {
+	public static User findUser(Connection conn, String name, String password, Boolean isActive) throws SQLException {
 
-		String sql = "Select user_name, password from public.user " + " where user_name = ? and password= ?";
+		String sql = "Select user_name, password, is_active from public.user " + " where user_name = ? and password= ? and is_active= ?";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
 		pstm.setString(1, name);
 		pstm.setString(2, password);
+		pstm.setBoolean(3, isActive);
 		ResultSet rs = pstm.executeQuery();
 
 		if (rs.next()) {
 			User user = new User();
 			user.setName(name);
 			user.setPassword(password);
+			user.setActivate(isActive);
 			return user;
 		}
 		return null;

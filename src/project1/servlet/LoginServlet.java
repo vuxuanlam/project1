@@ -33,14 +33,14 @@ public class LoginServlet extends HttpServlet {
 
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
-
+		Boolean isActive = true;
 		User user = null;
 		boolean isError = false;
 		String errorString = null;
 
 		try {
 			conn = DBConnect.getConnection();
-			user = DBUltil.findUser(conn, name, password);
+			user = DBUltil.findUser(conn, name, password, isActive);
 			if (user == null) {
 				isError = true;
 				errorString = "User Name or password invalid";
