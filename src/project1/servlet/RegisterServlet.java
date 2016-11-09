@@ -53,7 +53,7 @@ public class RegisterServlet extends HttpServlet {
 				String from = "lam.vuxuan2512@gmail.com";
 				String pass = "xuanlam2512";
 				String subject = "Register Mail";
-				String content = "Click this mail... ";
+				String content = "Please check link to activate acount " + "http://localhost:8080/project1/active?name="+ name+"&password="+password ;
 				user.setPassword(password);
 				user.setEmail(email);
 				user.setName(name);

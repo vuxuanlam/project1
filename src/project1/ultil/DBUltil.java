@@ -61,11 +61,12 @@ public class DBUltil {
 	}
 
 	public static void activateAccount(Connection conn, User user) throws SQLException {
-		String sql = "Update public.user set is_active =true where user_name=? ";
+		String sql = "Update public.user set is_active =true where user_name=? and password=? ";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
 
 		pstm.setString(1, user.getName());
+		pstm.setString(2, user.getPassword());
 		System.out.println(pstm);
 		pstm.executeUpdate();
 
