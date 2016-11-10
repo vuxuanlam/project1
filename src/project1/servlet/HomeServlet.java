@@ -2,7 +2,6 @@ package project1.servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,9 +14,7 @@ import project1.ultil.MyUltil;
 
 @WebServlet(urlPatterns = { "/home" })
 public class HomeServlet extends HttpServlet {
-	/**
-	 *
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	public HomeServlet() {
@@ -31,8 +28,10 @@ public class HomeServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/login");
 			return;
 		}
+
 		request.setAttribute("user", loginedUser);
 		request.getRequestDispatcher("homepage.jsp").forward(request, response);
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

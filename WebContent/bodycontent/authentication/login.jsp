@@ -23,7 +23,7 @@
 						<button class="btn btn-lg btn-primary btn-block" type="submit">
 							Sign in</button>
 						</br> <label class="checkbox pull-left"> <input type="checkbox"
-							value="remember-me"> Remember me
+							value="rememberMe"> Remember me
 						</label> <a href="register" class="pull-right new-account">Create an
 							account </a><span class="clearfix"></span>
 					</form>

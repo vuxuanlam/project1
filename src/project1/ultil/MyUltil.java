@@ -4,6 +4,7 @@ import java.sql.Connection;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import project1.bean.User;
@@ -11,6 +12,7 @@ import project1.bean.User;
 public class MyUltil {
 
 	public static final String ATT_NAME_CONNECTION = "ATTRIBUTE_FOR_CONNECTION";
+	private static final String ATT_NAME_USER_NAME = "ATTRIBUTE_FOR_STORE_USER_NAME_IN_COOKIE";
 
 	public static void storeConnection(HttpServletRequest request, Connection conn) {
 		request.getSession().setAttribute(ATT_NAME_CONNECTION, conn);

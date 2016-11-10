@@ -24,11 +24,14 @@
 					<input type="email" class="form-control" name="email"
 						placeholder="Email" required="required""></br>
 					<p class="help-block">Please provide your E-mail</p>
-					<input type="password" class="form-control" name="password"
-						placeholder="Password" required="required" pattern=".{6,20}">
+					<input type="password" id="password" class="form-control"
+						name="password" placeholder="Password" required="required"
+						pattern=".{6,20}">
 					<p class="help-block">Password should be at least 4 characters</p>
-					<input type="password" class="form-control" name="confirmpassword"
-						placeholder="ConfirmPasswor" required="required" pattern=".{6,20}">
+					<input type="password" id="confirmpassword" class="form-control"
+						name="confirmpassword" placeholder="ConfirmPasswor"
+						onkeyup="checkPass();" required="required" pattern=".{6,20}">
+					<span id="confirmMessage" class="confirmMessage"></span>
 					<p class="help-block">Please confirm your password</p>
 					</br>
 					<button class="btn btn-lg btn-primary btn-block" type="submit">
@@ -38,7 +41,22 @@
 			</div>
 			<p style="color: red;">${errorString}</p>
 		</div>
-		</div>
+		<script type="text/javascript">
+			function checkPass() {
+				var pass1 = document.getElementById('password');
+				var pass2 = document.getElementById('confirmpassword');
+				var message = document.getElementById('confirmMessage');
+				if ((pass1 != null) && (pass2 != null)) {
+					if (pass1.value == pass2.value) {
+						message.style.color = "#1d78ba";
+						message.innerHTML = "Password Match!"
+					} else {
+						message.style.color = "#d13636";
+						message.innerHTML = "Please retype confirm password!"
+					}
+				}
+			}
+		</script>
 	</form>
 
 </body>
