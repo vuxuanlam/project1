@@ -9,26 +9,6 @@
 	<welcome-file-list>
 		<welcome-file>/bodycontent/authentication/login.jsp</welcome-file>
 	</welcome-file-list>
-	<servlet>
-		<servlet-name>homeservlet</servlet-name>
-		<servlet-class>project1.servlet.HomeServlet</servlet-class>
-	</servlet>
 
-	<servlet>
-		<servlet-name>logoutservlet</servlet-name>
-		<servlet-class>project1.servlet.LogoutServlet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>loginservlet</servlet-name>
-		<servlet-class>project1.servlet.LoginServlet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>registerservlet</servlet-name>
-		<servlet-class>project1.servlet.RegisterServlet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>activeservlet</servlet-name>
-		<servlet-class>project1.servlet.ActiveServlet</servlet-class>
-	</servlet>
 
 </web-app>
