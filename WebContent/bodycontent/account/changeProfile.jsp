@@ -6,7 +6,8 @@
 		<!-- left column -->
 		<div class="col-md-3">
 			<div class="text-center">
-				<img src="https://freeiconshop.com/files/edd/person-flat.png" class="avatar img-circle" alt="avatar">
+				<img src="https://freeiconshop.com/files/edd/person-flat.png"
+					class="avatar img-circle" alt="avatar">
 				<h6>Upload a different photo...</h6>
 
 				<input class="form-control" type="file">
@@ -16,27 +17,27 @@
 		<!-- edit form column -->
 		<div class="col-md-9 personal-info">
 
-			<form class="form-horizontal" role="form">
+			<form class="form-horizontal" role="form" action="changeProfile"
+				method="POST">
 				<div class="form-group">
 					<label class="col-lg-3 control-label">Email:</label>
 					<div class="col-lg-8">
-						<input class="form-control" type="text" value="${user.email}">
+						<input class="form-control" type="text" name="email">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-3 control-label">Password:</label>
 					<div class="col-md-8">
 						<input class="form-control" type="password" name="password"
-							id="password"  pattern=".{6,20}" value="${user.password}">
+							id="password" pattern=".{6,20}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-3 control-label">Confirm password:</label>
 					<div class="col-md-8">
 						<input class="form-control" type="password" name="confirmpassword"
-							id="confirmpassword" pattern=".{6,20}" onkeyup="checkPass(); "
-							value="${user.password}"> <span id="confirmMessage"
-							class="confirmMessage"></span>
+							id="confirmpassword" pattern=".{6,20}" onkeyup="checkPass(); ">
+						<span id="confirmMessage" class="confirmMessage"></span>
 					</div>
 				</div>
 				<div class="form-group">
@@ -46,7 +47,11 @@
 						<span></span> <input type="reset" class="btn btn-default"
 							value="Cancel">
 					</div>
+
 				</div>
+				</br>
+				<p style="color: blue;">${errorString}</p>
+
 				<script type="text/javascript">
 					function checkPass() {
 						var pass1 = document.getElementById('password');
