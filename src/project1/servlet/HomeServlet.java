@@ -28,7 +28,7 @@ public class HomeServlet extends HttpServlet {
 			response.sendRedirect(request.getContextPath() + "/login");
 			return;
 		}
-
+		
 		request.setAttribute("user", loginedUser);
 		request.getRequestDispatcher("homepage.jsp").forward(request, response);
 

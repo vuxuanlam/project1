@@ -5,35 +5,43 @@ import java.util.Date;
 
 public class Post implements Serializable {
 
-	private int postId;
-	private int userId;
-	private String tittle;
+	private int post_Id;
+	private int user_Id;
+	private String name;
 	private String content;
 	private Date creatAt;
 	private Date updateAt;
 
-	public int getPostId() {
-		return postId;
+	public Post() {
 	}
 
-	public void setPostId(int postId) {
-		this.postId = postId;
+	public Post(String postName, int user_Id, String content) {
+	       this.name = postName;
+	       this.user_Id = user_Id;
+	       this.content = content;
+	   }
+	public int getPostId() {
+		return post_Id;
+	}
+
+	public void setPostId(int post_Id) {
+		this.post_Id = post_Id;
 	}
 
 	public int getUserId() {
-		return userId;
+		return user_Id;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUserId(int user_Id) {
+		this.user_Id = user_Id;
 	}
 
-	public String getTittle() {
-		return tittle;
+	public String getName() {
+		return name;
 	}
 
-	public void setTittle(String tittle) {
-		this.tittle = tittle;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getContent() {

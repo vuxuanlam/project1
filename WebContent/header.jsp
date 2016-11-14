@@ -25,7 +25,7 @@
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Account <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-
+							<li><a href="showProfile">View Profile</a></li>
 							<li><a href="changeProfile">Change Profile</a></li>
 
 							<li><a href="logout">Log Out</a></li>
