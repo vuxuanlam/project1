@@ -1,9 +1,7 @@
 package project1.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
