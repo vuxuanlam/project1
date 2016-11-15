@@ -1,7 +1,7 @@
 <jsp:include page="/header.jsp"></jsp:include>
 <div class="container">
 	<div class="row profile">
-		<form action="showProfile" method="POST">
+		<form action="showProfile" method="GET">
 			<div class="col-md-6">
 				<div class="profile-sidebar">
 

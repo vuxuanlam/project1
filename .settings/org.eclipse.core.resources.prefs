@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
+encoding//WebContent/bodycontent/authentication/login.jsp=UTF-8
 encoding//src/project1/dbconnect/PsqlConn.java=UTF-8
 encoding//src/project1/servlet/LoginServlet.java=UTF-8
-encoding//src/project1/servlet/login.jsp=UTF-8
 encoding//src/project1/ultil/MyUltil.java=UTF-8

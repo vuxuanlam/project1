@@ -1,35 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="assets/css/bootstrap.min.css" rel="stylesheet"
-	type="text/css" />
-<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+<jsp:include page="/header.jsp"></jsp:include>
 
-<title>Register</title>
-</head>
-<body>
-	<form class="form-horizontal" action="creatPost" method="POST">
-		<h1 class="text-center signup-title">Creat Post Form</h1>
-		<div class="col-sm-6 col-md-5 col-md-offset-4">
-			<br> <br>
-			<div class="control-group">
-				<div class="controls">
-					<input type="text" class="form-control" name="name"
-						placeholder="PostName" required="required">
-					<p class="help-block">Please Write Post Name</p>
-					<input type="text" class="form-control" name="content"
-						placeholder="Content" required="required"><br>
-					<button class="btn btn-lg btn-primary btn-block" type="submit">
-						Creat</button>
-					<br>
+<div class="container">
+	<div class="row">
+		<h3 class="text-center">Create Post</h3>
+		<br>
+		<br>
+		<div class="col-md-8 col-md-offset-1">
+			<form class="form-horizontal" method="POST" action="createPost">
+				<div class="form-group">
+					<label for="name" class="col-md-3 control-label"> Name </label>
+					<div class="col-md-9">
+						<input type="text" class="form-control" id="name" name="name"
+							placeholder="Name of Post" required="required">
+					</div>
 				</div>
-			</div>
-			<p style="color: red;">${errorString}</p>
+				<br> <br>
+				<div class="form-group">
+					<label for="Content" class="col-md-3 control-label">
+						Content </label>
+					<div class="col-md-9">
+						<textarea class="form-control" rows="9" id="content"
+							placeholder="Content of Post" name="content" required="required"></textarea>
+					</div>
+				</div>
+
+				<div id="tag"></div>
+				<div class="list-task-item">
+					<div class="task-item">
+						<div class="form-group">
+							<label for="tag-name" class="col-md-3 control-label">Task
+								Name</label>
+							<div class="col-md-9">
+								<input type="text" class="form-control" id="tag-name"
+									name="tagName" placeholder="Tag Name">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-3 col-md-9">
+						<br>
+						<button type="submit" class="btn btn-primary btn-block">Create</button>
+					</div>
+				</div>
+			</form>
 		</div>
-
-	</form>
-
-</body>
-</html>
+	</div>
+</div>
+<jsp:include page="/footer.jsp"></jsp:include>

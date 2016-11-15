@@ -49,26 +49,27 @@ public class DBUltil {
 
 	}
 
-	public static User findUserbyId(Connection conn, String name) throws SQLException {
-
-		String sql = "Select user_id from public.user" + " where user_name = ?";
-
-		PreparedStatement pstm = conn.prepareStatement(sql);
-		pstm.setString(1, name);
-		ResultSet rs = pstm.executeQuery();
-
-		if (rs.next()) {
-			User user = new User();
-			user.setName(rs.getString("name"));
-			user.setUserId(rs.getInt("user_id"));
-			return user;
-		}
-		return null;
-	}
+	// public static User findUserbyId(Connection conn, String name) throws
+	// SQLException {
+	//
+	// String sql = "Select user_id from public.user" + " where user_name = ?";
+	//
+	// PreparedStatement pstm = conn.prepareStatement(sql);
+	// pstm.setString(1, name);
+	// ResultSet rs = pstm.executeQuery();
+	//
+	// if (rs.next()) {
+	// User user = new User();
+	// user.setName(rs.getString("name"));
+	// user.setUserId(rs.getInt("user_id"));
+	// return user;
+	// }
+	// return null;
+	// }
 
 	public static User findUserbyName(Connection conn, String name) throws SQLException {
 
-		String sql = "Select user_name, password, email, create_at, update_at from public.user"
+		String sql = "Select user_id, user_name, password, email, create_at, update_at from public.user"
 				+ " where user_name = ?";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
@@ -77,14 +78,36 @@ public class DBUltil {
 
 		if (rs.next()) {
 			User user = new User();
+			user.setUserId(rs.getInt("user_id"));
 			user.setName(rs.getString("user_name"));
 			user.setEmail(rs.getString("email"));
 			user.setCreateAt(rs.getDate("create_at"));
 			user.setUpdateAt(rs.getDate("update_at"));
+
 			return user;
 
 		}
 		return null;
+	}
+
+	public static Post showAllPost(Connection conn, int userId) throws SQLException {
+
+		String sql = "Select post_id, post_name, content, user_id from public.post" + " where user_id = ?";
+
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		pstm.setInt(1, userId);
+		ResultSet rs = pstm.executeQuery();
+		if (rs.next()) {
+			Post post = new Post();
+			post.setPostId(rs.getInt("post_id"));
+			post.setName(rs.getString("post_name"));
+			post.setContent(rs.getString("content"));
+			post.setUserId(rs.getInt("user_id"));
+
+			return post;
+		}
+		return null;
+
 	}
 
 	public static void insertUser(Connection conn, User user) throws SQLException {
@@ -124,14 +147,14 @@ public class DBUltil {
 
 	}
 
-	public static void creatPost(Connection conn, Post post) throws SQLException {
+	public static void creatPost(Connection conn, Post post, int userId) throws SQLException {
 		String sql = "Insert into public.post(post_name, content, user_id) values (?,?,?)";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
 
 		pstm.setString(1, post.getName());
 		pstm.setString(2, post.getContent());
-		pstm.setInt(3, post.getUserId());
+		pstm.setInt(3, userId);
 		System.out.println(pstm);
 		pstm.executeUpdate();
 

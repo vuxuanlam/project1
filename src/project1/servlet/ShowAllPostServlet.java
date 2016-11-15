@@ -12,12 +12,12 @@ import javax.servlet.annotation.WebServlet;
 import project1.bean.User;
 import project1.ultil.MyUltil;
 
-@WebServlet(urlPatterns = { "/home" })
-public class HomeServlet extends HttpServlet {
+@WebServlet(urlPatterns = { "/showAllPost" })
+public class ShowAllPostServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	public HomeServlet() {
+	public ShowAllPostServlet() {
 		super();
 	}
 

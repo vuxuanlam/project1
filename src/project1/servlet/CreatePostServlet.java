@@ -17,14 +17,15 @@ import project1.bean.User;
 import project1.dbconnect.DBConnect;
 import project1.ultil.*;
 
-@WebServlet(urlPatterns = { "/creatPost" })
-public class CreatPostServlet extends HttpServlet {
+@WebServlet(urlPatterns = { "/createPost" })
+public class CreatePostServlet extends HttpServlet {
 
 	Connection conn;
 
-	public CreatPostServlet() {
+	public CreatePostServlet() {
 		super();
 	}
+
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -33,21 +34,33 @@ public class CreatPostServlet extends HttpServlet {
 		User loginedUser = MyUltil.getLoginedUser(session);
 		String name = loginedUser.getName();
 		User user = new User();
+		Post post = new Post();
 		String postName = request.getParameter("name");
 		String content = request.getParameter("content");
 		PrintWriter out = response.getWriter();
 		String errorString = null;
 		try {
 			conn = DBConnect.getConnection();
-			user = DBUltil.findUserbyId(conn, name);
+			user = DBUltil.findUserbyName(conn, name);
 			int userId = user.getUserId();
-
-
+			post.setName(postName);
+			post.setContent(content);
+			post.setUserId(userId);
+			DBUltil.creatPost(conn, post, userId);
+			errorString = "Creat Post Success";
+			request.setAttribute("errorString", errorString);
+			request.setAttribute("user", user);
+		response.sendRedirect(request.getContextPath() + "/createPost");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			errorString = e.getMessage();
+		} finally {
+			DBConnect.closeQuietly(conn);
 		}
-
 	}
 
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html;charset=UTF-8");
+		request.getRequestDispatcher("/bodycontent/post/createPost.jsp").forward(request, response);
+	}
 }

@@ -65,7 +65,7 @@ public class LoginServlet extends HttpServlet {
 
 			HttpSession session = request.getSession();
 			MyUltil.storeLoginedUser(session, user);
-			response.sendRedirect(request.getContextPath() + "/home");
+			response.sendRedirect(request.getContextPath() + "/showAllPost");
 		}
 	}
 

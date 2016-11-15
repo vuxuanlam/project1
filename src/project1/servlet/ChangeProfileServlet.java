@@ -29,7 +29,7 @@ public class ChangeProfileServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User loginedUser = MyUltil.getLoginedUser(session);
@@ -73,7 +73,7 @@ public class ChangeProfileServlet extends HttpServlet {
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
 		request.getRequestDispatcher("/bodycontent/account/changeProfile.jsp").forward(request, response);
