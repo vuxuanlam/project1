@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.ArrayList;
 
 import project1.bean.User;
 import project1.bean.Post;
@@ -90,24 +92,46 @@ public class DBUltil {
 		return null;
 	}
 
-	public static Post showAllPost(Connection conn, int userId) throws SQLException {
+	public static List<Post> viewMyPost(Connection conn, int userId) throws SQLException {
 
-		String sql = "Select post_id, post_name, content, user_id from public.post" + " where user_id = ?";
+		String sql = "Select * from public.post" + " where user_id = ?";
 
 		PreparedStatement pstm = conn.prepareStatement(sql);
 		pstm.setInt(1, userId);
 		ResultSet rs = pstm.executeQuery();
-		if (rs.next()) {
+		List<Post> listPost = new ArrayList<Post>();
+
+		while (rs.next()) {
 			Post post = new Post();
 			post.setPostId(rs.getInt("post_id"));
 			post.setName(rs.getString("post_name"));
 			post.setContent(rs.getString("content"));
 			post.setUserId(rs.getInt("user_id"));
-
-			return post;
+			post.setCreateAt(rs.getDate("create_at"));
+			post.setUpdateAt(rs.getDate("update_at"));
+			listPost.add(post);
 		}
-		return null;
+		return listPost;
+	}
 
+	public static List<Post> viewAllPost(Connection conn) throws SQLException {
+
+		String sql = "Select * from public.post Order By post_id desc";
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		ResultSet rs = pstm.executeQuery();
+		List<Post> listPost = new ArrayList<Post>();
+
+		while (rs.next()) {
+			Post post = new Post();
+			post.setPostId(rs.getInt("post_id"));
+			post.setName(rs.getString("post_name"));
+			post.setContent(rs.getString("content"));
+			post.setUserId(rs.getInt("user_id"));
+			post.setCreateAt(rs.getDate("create_at"));
+			post.setUpdateAt(rs.getDate("update_at"));
+			listPost.add(post);
+		}
+		return listPost;
 	}
 
 	public static void insertUser(Connection conn, User user) throws SQLException {

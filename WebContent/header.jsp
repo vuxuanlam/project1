@@ -19,8 +19,9 @@
 					<button type="submit" class="btn btn-default">Submit</button>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="showAllPost">Home Page</a></li>
-					<li><a href="createPost">My Post</a></li>
+					<li><a href="allPost">Home Page</a></li>
+					<li><a href="createPost">Creat Post</a></li>
+					<li><a href="myPost">My post</a>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">Account <span class="caret"></span></a>

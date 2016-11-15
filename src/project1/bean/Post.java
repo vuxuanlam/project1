@@ -5,11 +5,15 @@ import java.util.Date;
 
 public class Post implements Serializable {
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	private int post_Id;
 	private int user_Id;
 	private String name;
 	private String content;
-	private Date creatAt;
+	private Date createAt;
 	private Date updateAt;
 
 	public Post() {
@@ -52,12 +56,12 @@ public class Post implements Serializable {
 		this.content = content;
 	}
 
-	public Date getCreatAt() {
-		return creatAt;
+	public Date getCreateAt() {
+		return createAt;
 	}
 
-	public void setCreatAt(Date creatAt) {
-		this.creatAt = creatAt;
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
 	}
 
 	public Date getUpdateAt() {

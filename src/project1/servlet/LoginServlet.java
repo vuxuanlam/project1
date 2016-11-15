@@ -1,7 +1,6 @@
 package project1.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -65,7 +64,7 @@ public class LoginServlet extends HttpServlet {
 
 			HttpSession session = request.getSession();
 			MyUltil.storeLoginedUser(session, user);
-			response.sendRedirect(request.getContextPath() + "/showAllPost");
+			response.sendRedirect(request.getContextPath() + "/allPost");
 		}
 	}
 

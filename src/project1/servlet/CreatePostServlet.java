@@ -1,7 +1,6 @@
 package project1.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -37,7 +36,6 @@ public class CreatePostServlet extends HttpServlet {
 		Post post = new Post();
 		String postName = request.getParameter("name");
 		String content = request.getParameter("content");
-		PrintWriter out = response.getWriter();
 		String errorString = null;
 		try {
 			conn = DBConnect.getConnection();
