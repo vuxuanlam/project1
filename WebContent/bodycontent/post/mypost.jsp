@@ -14,13 +14,16 @@
 								#Post${post.postId}</div>
 							<div class="panel-body">
 								<ul class="unstyled">
-									<div class="text-arial">
-										<a href="editPost?editPostId=${post.postId}"> Edit</a> - <a href="deletePost?deletePostId=${post.postId}">
-											Delete </a>
-									</div>
+									<li><a href="editPost?editPostId=${post.postId}"> Edit</a>
+										- <a href="deletePost?deletePostId=${post.postId}"> Delete
+									</a></li>
 									<li>${post.content}</li>
 									<li>Create At: ${post.createAt} - Update
 										At:${post.updateAt}</li>
+
+									<li><a href="createComment?commentPostId=${post.postId}">
+											Comment</a></li>
+
 								</ul>
 							</div>
 						</div>

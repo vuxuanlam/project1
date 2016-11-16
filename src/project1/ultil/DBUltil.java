@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.ArrayList;
 
-import project1.bean.User;
-import project1.bean.Post;
+import project1.bean.*;
+
 import java.sql.Date;
 
 public class DBUltil {
@@ -80,23 +80,43 @@ public class DBUltil {
 		return null;
 	}
 
-	// public static User findUserbyId(Connection conn, String name) throws
-	// SQLException {
-	//
-	// String sql = "Select user_id from public.user" + " where user_name = ?";
-	//
-	// PreparedStatement pstm = conn.prepareStatement(sql);
-	// pstm.setString(1, name);
-	// ResultSet rs = pstm.executeQuery();
-	//
-	// if (rs.next()) {
-	// User user = new User();
-	// user.setName(rs.getString("name"));
-	// user.setUserId(rs.getInt("user_id"));
-	// return user;
-	// }
-	// return null;
-	// }
+	public static Comment findComment(Connection conn, int post_Id) throws SQLException {
+		String sql = "Select * from public.comment " + " where post_id = ?  ";
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		pstm.setInt(1, post_Id);
+		ResultSet rs = pstm.executeQuery();
+		if (rs.next()) {
+			Comment comment = new Comment();
+			comment.setPost_Id(rs.getInt("comment_id"));
+			comment.setPost_Id(rs.getInt("post_id"));
+			comment.setUser_Id(rs.getInt("user_id"));
+			comment.setContent(rs.getString("content"));
+			comment.setCreateAt(rs.getTimestamp("create_at"));
+			comment.setUpdateAt(rs.getTimestamp("update_at"));
+			return comment;
+
+		}
+		return null;
+
+	}
+
+	public static User findUserbyId(Connection conn, int userId) throws SQLException {
+
+		String sql = "Select * from public.user" + " where user_id = ?";
+
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		pstm.setInt(1, userId);
+		ResultSet rs = pstm.executeQuery();
+
+		if (rs.next()) {
+			User user = new User();
+			user.setName(rs.getString("user_name"));
+			user.setUserId(rs.getInt("user_id"));
+			return user;
+		}
+		return null;
+	}
+
 	public static User findUserbyName(Connection conn, String name) throws SQLException {
 
 		String sql = "Select user_id, user_name, password, email, create_at, update_at from public.user"
@@ -136,13 +156,15 @@ public class DBUltil {
 		return listPost;
 	}
 
-	public static List<Post> viewAllPost(Connection conn) throws SQLException {
+	public static List<UserCommentPost> viewAllPost(Connection conn) throws SQLException {
 
 		String sql = "Select * from public.post Order By post_id desc";
 		PreparedStatement pstm = conn.prepareStatement(sql);
 		ResultSet rs = pstm.executeQuery();
-		List<Post> listPost = new ArrayList<Post>();
+		List<UserCommentPost> listUserCommentPost = new ArrayList<UserCommentPost>();
 		while (rs.next()) {
+			UserCommentPost userCommentPost = new UserCommentPost();
+			List<UserComment> listUserComment = new ArrayList<UserComment>();
 			Post post = new Post();
 			post.setPostId(rs.getInt("post_id"));
 			post.setName(rs.getString("post_name"));
@@ -150,9 +172,41 @@ public class DBUltil {
 			post.setUserId(rs.getInt("user_id"));
 			post.setCreateAt(rs.getTimestamp("create_at"));
 			post.setUpdateAt(rs.getTimestamp("update_at"));
-			listPost.add(post);
+			int post_Id = post.getPostId();
+			listUserComment = showAllComment(conn, post_Id);
+			userCommentPost.setPost(post);
+
+			userCommentPost.setListUserComment(listUserComment);
+			listUserCommentPost.add(userCommentPost);
 		}
-		return listPost;
+		return listUserCommentPost;
+	}
+
+	public static List<UserComment> showAllComment(Connection conn, int post_Id) throws SQLException {
+
+		String sql = "Select * from public.comment where post_id =? ";
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		pstm.setInt(1, post_Id);
+		ResultSet rs = pstm.executeQuery();
+		List<UserComment> listUserComment = new ArrayList<UserComment>();
+		while (rs.next()) {
+			UserComment userComment = new UserComment();
+			Comment comment = new Comment();
+			User user = new User();
+			comment.setComment_Id(rs.getInt("comment_id"));
+			comment.setContent(rs.getString("content"));
+			comment.setPost_Id(rs.getInt("post_id"));
+			comment.setUser_Id(rs.getInt("user_id"));
+			user = findUserbyId(conn, rs.getInt("user_id"));
+			comment.setCreateAt(rs.getTimestamp("create_at"));
+			comment.setUpdateAt(rs.getTimestamp("update_at"));
+			userComment.setComment(comment);
+
+			userComment.setUser(user);
+			listUserComment.add(userComment);
+		}
+		return listUserComment;
+
 	}
 
 	public static void deletePost(Connection conn, int post_Id) throws SQLException {
@@ -218,4 +272,17 @@ public class DBUltil {
 		System.out.println(pstm);
 		pstm.executeUpdate();
 	}
+
+	public static void creatComment(Connection conn, String content, int postId, int userId) throws SQLException {
+
+		String sql = "Insert into public.comment(post_id, user_id, content) values (?,?,?)";
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		pstm.setInt(1, postId);
+		pstm.setInt(2, userId);
+		pstm.setString(3, content);
+		System.out.println(pstm);
+		pstm.executeUpdate();
+
+	}
+
 }

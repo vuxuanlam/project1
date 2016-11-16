@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.annotation.WebServlet;
 
-import project1.bean.Post;
-import project1.bean.User;
+import project1.bean.*;
+
 import project1.dbconnect.DBConnect;
 import project1.ultil.DBUltil;
 import project1.ultil.MyUltil;
@@ -33,16 +33,17 @@ public class ViewAllPostServlet extends HttpServlet {
 	    HttpSession session = request.getSession();
 		User loginedUser = MyUltil.getLoginedUser(session);
 		if (loginedUser == null) {
-			response.sendRedirect(request.getContextPath() + "/login");
+			request.getRequestDispatcher("/homepage.jsp").forward(request, response);
 			return;
 		}
+		List<UserComment> listUserComment = null;
 		List<Post> listPost = null;
 		String errorString = null;
 		try {
 			conn = DBConnect.getConnection();
-			listPost = DBUltil.viewAllPost(conn);
+			List<UserCommentPost> listUserCommentPost =DBUltil.viewAllPost(conn);
 			request.setAttribute("errorString", errorString);
-			request.setAttribute("postList", listPost);
+			request.setAttribute("postList", listUserCommentPost);
 			request.getRequestDispatcher("/homepage.jsp").forward(request, response);
 
 		} catch (ClassNotFoundException | SQLException e) {

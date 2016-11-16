@@ -12,7 +12,7 @@
 					<br>
 					<div class="profile-usermenu">
 						<ul class="unstyled">
-							<li><i class="glyphicon glyphicon-user"></i> User:
+							<li><i class="glyphicon glyphicon-user"></i> User
 								:${user.name}</li>
 							<li><i class="	glyphicon glyphicon-envelope"></i>
 								Email:${user.email}</li>

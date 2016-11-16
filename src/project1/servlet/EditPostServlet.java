@@ -47,7 +47,6 @@ public class EditPostServlet extends HttpServlet {
 		try {
 			conn = DBConnect.getConnection();
 			user = DBUltil.findUserbyName(conn, name);
-			int userId = user.getUserId();
 			post = DBUltil.findPostbyId(conn, postId);
 			post.setName(post_name);
 			post.setContent(content);
