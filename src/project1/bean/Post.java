@@ -1,7 +1,7 @@
 package project1.bean;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class Post implements Serializable {
 
@@ -13,8 +13,8 @@ public class Post implements Serializable {
 	private int user_Id;
 	private String name;
 	private String content;
-	private Date createAt;
-	private Date updateAt;
+	private Timestamp createAt;
+	private Timestamp updateAt;
 
 	public Post() {
 	}
@@ -56,19 +56,19 @@ public class Post implements Serializable {
 		this.content = content;
 	}
 
-	public Date getCreateAt() {
+	public Timestamp getCreateAt() {
 		return createAt;
 	}
 
-	public void setCreateAt(Date createAt) {
+	public void setCreateAt(Timestamp createAt) {
 		this.createAt = createAt;
 	}
 
-	public Date getUpdateAt() {
+	public Timestamp getUpdateAt() {
 		return updateAt;
 	}
 
-	public void setUpdateAt(Date updateAt) {
+	public void setUpdateAt(Timestamp updateAt) {
 		this.updateAt = updateAt;
 	}
 

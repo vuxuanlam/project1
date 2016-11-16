@@ -29,7 +29,8 @@ public class CreatePostServlet extends HttpServlet {
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+	    request.setCharacterEncoding("UTF-8");
+	    HttpSession session = request.getSession();
 		User loginedUser = MyUltil.getLoginedUser(session);
 		String name = loginedUser.getName();
 		User user = new User();
@@ -58,7 +59,8 @@ public class CreatePostServlet extends HttpServlet {
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
+	    request.setCharacterEncoding("UTF-8");
+	    response.setContentType("text/html;charset=UTF-8");
 		request.getRequestDispatcher("/bodycontent/post/createPost.jsp").forward(request, response);
 	}
 }

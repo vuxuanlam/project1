@@ -5,12 +5,15 @@
 
 <div class="container">
 	<div class="row">
-		<h3 class="text-center">Create Post</h3>
+		<h3 class="text-center">Edit Post</h3>
 		<br> <br>
 		<div class="col-md-8 col-md-offset-1">
-			<form class="form-horizontal" method="POST" action="createPost">
+			<form class="form-horizontal" method="POST"
+				action="editPost?editPostId=${editPostId }">
+
 				<div class="form-group">
-					<label for="name" class="col-md-3 control-label"> Name </label>
+					<label for="name" class="col-md-3 control-label"> Post Name
+					</label>
 					<div class="col-md-9">
 						<input type="text" class="form-control" id="name" name="name"
 							placeholder="Name of Post" required="required">
@@ -18,7 +21,7 @@
 				</div>
 				<br> <br>
 				<div class="form-group">
-					<label for="Content" class="col-md-3 control-label">
+					<label for="Content" class="col-md-3 control-label"> Post
 						Content </label>
 					<div class="col-md-9">
 						<textarea class="form-control" rows="9" id="content"
@@ -42,11 +45,12 @@
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-md-9">
 						<br>
-						<button type="submit" class="btn btn-primary btn-block">Create</button>
+						<button type="submit" class="btn btn-primary btn-block">Save</button>
 					</div>
 				</div>
 			</form>
 		</div>
+		<p style="color: red;">${errorString}</p>
 	</div>
 </div>
 <jsp:include page="/footer.jsp"></jsp:include>

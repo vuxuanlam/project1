@@ -29,7 +29,8 @@ public class ViewAllPostServlet extends HttpServlet {
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+	    request.setCharacterEncoding("UTF-8");
+	    HttpSession session = request.getSession();
 		User loginedUser = MyUltil.getLoginedUser(session);
 		if (loginedUser == null) {
 			response.sendRedirect(request.getContextPath() + "/login");
@@ -55,7 +56,8 @@ public class ViewAllPostServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
+	    request.setCharacterEncoding("UTF-8");
+	    response.setContentType("text/html;charset=UTF-8");
 		request.getRequestDispatcher("/homepage.jsp").forward(request, response);
 	}
 }
