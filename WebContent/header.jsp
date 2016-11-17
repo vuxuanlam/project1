@@ -12,7 +12,7 @@
 	<nav class="navbar navbar-light" style="background-color: #ccf7ff;">
 		<div class="container-fluid" style="margin-left: 200px">
 			<div class="collapse navbar-collapse">
-				<form class="navbar-form navbar-left search">
+				<form class="navbar-form navbar-left search" method = "POST" action = "search">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Search">
 					</div>

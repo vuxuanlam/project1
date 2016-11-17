@@ -10,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import project1.bean.User;
 import project1.dbconnect.DBConnect;
@@ -53,7 +52,7 @@ public class RegisterServlet extends HttpServlet {
 				String from = "lam.vuxuan2512@gmail.com";
 				String pass = "xuanlam2512";
 				String subject = "Register Mail";
-				String content = "Please check link to activate acount " + "http://localhost:8080/project1/active?name="+ name+"&password="+password ;
+				String content = "Please check link to activate acount " + "http://localhost:8080/project1/active?name="+ name +"&password="+DBUltil.encryptMD5(password);
 				user.setPassword(password);
 				user.setEmail(email);
 				user.setName(name);

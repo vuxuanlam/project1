@@ -29,19 +29,7 @@
 					</div>
 				</div>
 
-				<div id="tag"></div>
-				<div class="list-task-item">
-					<div class="task-item">
-						<div class="form-group">
-							<label for="tag-name" class="col-md-3 control-label">Task
-								Name</label>
-							<div class="col-md-9">
-								<input type="text" class="form-control" id="tag-name"
-									name="tagName" placeholder="Tag Name">
-							</div>
-						</div>
-					</div>
-				</div>
+
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-md-9">
 						<br>

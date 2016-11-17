@@ -1,5 +1,8 @@
 package project1.ultil;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,8 +11,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 import project1.bean.*;
-
-import java.sql.Date;
 
 public class DBUltil {
 
@@ -100,6 +101,40 @@ public class DBUltil {
 
 	}
 
+	public static Tag findTag(Connection conn, String tagName) throws SQLException {
+		String sql = "Select * from public.tag " + " where tag_name = ? ";
+
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		pstm.setString(1, tagName);
+		ResultSet rs = pstm.executeQuery();
+
+		if (rs.next()) {
+			Tag tag = new Tag();
+			tag.setTag_id(rs.getInt("tag_id"));
+			tag.setTag_name(rs.getString("tag_name"));
+			return tag;
+		}
+		return null;
+
+	}
+
+	public static Post findPostByName(Connection conn, String postName) throws SQLException {
+		String sql = "Select * from public.post " + " where post_name = ? ";
+
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		pstm.setString(1, postName);
+		ResultSet rs = pstm.executeQuery();
+
+		if (rs.next()) {
+			Post post = new Post();
+			post.setPostId(rs.getInt("post_id"));
+			post.setName(postName);
+			return post;
+		}
+		return null;
+
+	}
+
 	public static User findUserbyId(Connection conn, int userId) throws SQLException {
 
 		String sql = "Select * from public.user" + " where user_id = ?";
@@ -119,8 +154,7 @@ public class DBUltil {
 
 	public static User findUserbyName(Connection conn, String name) throws SQLException {
 
-		String sql = "Select user_id, user_name, password, email, create_at, update_at from public.user"
-				+ " where user_name = ?";
+		String sql = "Select * from public.user" + " where user_name = ?";
 		PreparedStatement pstm = conn.prepareStatement(sql);
 		pstm.setString(1, name);
 		ResultSet rs = pstm.executeQuery();
@@ -131,6 +165,7 @@ public class DBUltil {
 			user.setEmail(rs.getString("email"));
 			user.setCreateAt(rs.getDate("create_at"));
 			user.setUpdateAt(rs.getDate("update_at"));
+			user.setPassword(rs.getString("password"));
 			return user;
 		}
 		return null;
@@ -229,12 +264,11 @@ public class DBUltil {
 		pstm.executeUpdate();
 	}
 
-	public static void activateAccount(Connection conn, User user) throws SQLException {
+	public static void activateAccount(Connection conn, String name) throws SQLException {
 
-		String sql = "Update public.user set is_active =true where user_name=? and password=? ";
+		String sql = "Update public.user set is_active =true where user_name=? ";
 		PreparedStatement pstm = conn.prepareStatement(sql);
-		pstm.setString(1, user.getName());
-		pstm.setString(2, user.getPassword());
+		pstm.setString(1, name);
 		System.out.println(pstm);
 		pstm.executeUpdate();
 	}
@@ -283,6 +317,41 @@ public class DBUltil {
 		System.out.println(pstm);
 		pstm.executeUpdate();
 
+	}
+
+	public static void insertTag(Connection conn, String tagName) throws SQLException {
+
+		String sql = "Insert into public.tag(tag_name) values (?)";
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		pstm.setString(1, tagName);
+		System.out.println(pstm);
+		pstm.executeUpdate();
+	}
+
+	public static void insertPostTag(Connection conn, int post_Id, int tag_Id) throws SQLException {
+
+		String sql = "Insert into public.post_tag(post_id, tag_id) values (?,?)";
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		pstm.setInt(1, post_Id);
+		pstm.setInt(2, tag_Id);
+		System.out.println(pstm);
+		pstm.executeUpdate();
+
+	}
+
+	public static String encryptMD5(String input) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] messageDigest = md.digest(input.getBytes());
+			BigInteger number = new BigInteger(1, messageDigest);
+			String hashtext = number.toString(16);
+			while (hashtext.length() < 32) {
+				hashtext = "0" + hashtext;
+			}
+			return hashtext;
+		} catch (NoSuchAlgorithmException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 }

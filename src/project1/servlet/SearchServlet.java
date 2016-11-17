@@ -18,13 +18,13 @@ import project1.dbconnect.DBConnect;
 import project1.ultil.DBUltil;
 import project1.ultil.MyUltil;
 
-@WebServlet(urlPatterns = { "/allPost" })
-public class ViewAllPostServlet extends HttpServlet {
+@WebServlet(urlPatterns = { "/search" })
+public class SearchServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	Connection conn;
 
-	public ViewAllPostServlet() {
+	public SearchServlet() {
 		super();
 	}
 
@@ -33,7 +33,7 @@ public class ViewAllPostServlet extends HttpServlet {
 	    HttpSession session = request.getSession();
 		User loginedUser = MyUltil.getLoginedUser(session);
 		if (loginedUser == null) {
-			request.getRequestDispatcher("/homepage.jsp").forward(request, response);
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
 			return;
 		}
 		String errorString = null;

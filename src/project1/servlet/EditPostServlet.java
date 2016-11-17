@@ -33,6 +33,7 @@ public class EditPostServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String post_name = request.getParameter("name");
 		String content = request.getParameter("content");
+		String tagName = request.getParameter("tagName");
 		String errorString = null;
 		HttpSession session = request.getSession();
 		User loginedUser = MyUltil.getLoginedUser(session);
@@ -51,7 +52,9 @@ public class EditPostServlet extends HttpServlet {
 			post.setName(post_name);
 			post.setContent(content);
 			post.setPostId(postId);
+
 			DBUltil.editPost(conn, post);
+
 			errorString = "Change profile succesfull";
 			request.setAttribute("errorString", errorString);
 			request.setAttribute("post", post);

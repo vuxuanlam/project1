@@ -11,8 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import project1.bean.Post;
-import project1.bean.User;
+import project1.bean.*;
 import project1.dbconnect.DBConnect;
 import project1.ultil.*;
 
@@ -29,14 +28,15 @@ public class CreatePostServlet extends HttpServlet {
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    request.setCharacterEncoding("UTF-8");
-	    HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
 		User loginedUser = MyUltil.getLoginedUser(session);
 		String name = loginedUser.getName();
 		User user = new User();
 		Post post = new Post();
 		String postName = request.getParameter("name");
 		String content = request.getParameter("content");
+		String tagName = request.getParameter("tagName");
 		String errorString = null;
 		try {
 			conn = DBConnect.getConnection();
@@ -46,10 +46,17 @@ public class CreatePostServlet extends HttpServlet {
 			post.setContent(content);
 			post.setUserId(userId);
 			DBUltil.creatPost(conn, post, userId);
+
+			DBUltil.insertTag(conn, tagName);
+			Tag tag = DBUltil.findTag(conn, tagName);
+			int tagId = tag.getTag_id();
+			Post post2 = DBUltil.findPostByName(conn, postName);
+			int postId = post2.getPostId();
+			DBUltil.insertPostTag(conn, postId, tagId);
 			errorString = "Creat Post Success";
 			request.setAttribute("errorString", errorString);
 			request.setAttribute("user", user);
-		response.sendRedirect(request.getContextPath() + "/createPost");
+			response.sendRedirect(request.getContextPath() + "/createPost");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 			errorString = e.getMessage();
@@ -59,8 +66,8 @@ public class CreatePostServlet extends HttpServlet {
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    request.setCharacterEncoding("UTF-8");
-	    response.setContentType("text/html;charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		request.getRequestDispatcher("/bodycontent/post/createPost.jsp").forward(request, response);
 	}
 }

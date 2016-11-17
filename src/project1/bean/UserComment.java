@@ -1,7 +1,7 @@
 package project1.bean;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+
 
 public class UserComment implements Serializable {
 	private static final long serialVersionUID = 1L;

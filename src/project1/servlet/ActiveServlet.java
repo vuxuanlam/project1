@@ -33,26 +33,21 @@ public class ActiveServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String errorString = null;
 		User user = new User();
-
 		try {
 			conn = DBConnect.getConnection();
-			if ((name == null) && (password == null)) {
-				errorString = ("User or password is invalid");
-			} else {
-				user.setName(name);
-				user.setPassword(password);
-				DBUltil.activateAccount(conn, user);
-			}
+
+			user.setName(name);
+			User user2 = DBUltil.findUserbyName(conn, name);
+			String password2 = user2.getPassword();
+			DBUltil.activateAccount(conn, name);
+
+			user.setPassword(password2);
 			request.setAttribute("errorString", errorString);
 			request.setAttribute("user", user);
-
 		} catch (ClassNotFoundException | SQLException e) {
-
 			e.printStackTrace();
 			errorString = e.getMessage();
-		}
-
-		finally {
+		} finally {
 			DBConnect.closeQuietly(conn);
 		}
 	}

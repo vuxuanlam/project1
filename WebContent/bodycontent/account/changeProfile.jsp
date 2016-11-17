@@ -49,7 +49,7 @@
 					</div>
 
 				</div>
-				</br>
+				<br>
 				<p style="color: blue;">${errorString}</p>
 
 				<script type="text/javascript">

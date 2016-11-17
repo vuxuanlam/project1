@@ -2,7 +2,6 @@ package project1.bean;
 
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.List;
 
 public class UserCommentPost implements Serializable {
