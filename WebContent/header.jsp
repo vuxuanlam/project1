@@ -14,7 +14,7 @@
 			<div class="collapse navbar-collapse">
 				<form class="navbar-form navbar-left search" method = "POST" action = "search">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
+						<input type="text" class="form-control"  name = "tagName" placeholder="Search">
 					</div>
 					<button type="submit" class="btn btn-default">Submit</button>
 				</form>

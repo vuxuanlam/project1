@@ -33,7 +33,7 @@ public class ViewAllPostServlet extends HttpServlet {
 	    HttpSession session = request.getSession();
 		User loginedUser = MyUltil.getLoginedUser(session);
 		if (loginedUser == null) {
-			request.getRequestDispatcher("/homepage.jsp").forward(request, response);
+			request.getRequestDispatcher("/bodycontent/authentication/login.jsp").forward(request, response);
 			return;
 		}
 		String errorString = null;

@@ -3,6 +3,7 @@ package project1.servlet;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,6 +35,7 @@ public class CreatePostServlet extends HttpServlet {
 		String name = loginedUser.getName();
 		User user = new User();
 		Post post = new Post();
+		Tag tag = new Tag();
 		String postName = request.getParameter("name");
 		String content = request.getParameter("content");
 		String tagName = request.getParameter("tagName");
@@ -45,14 +47,20 @@ public class CreatePostServlet extends HttpServlet {
 			post.setName(postName);
 			post.setContent(content);
 			post.setUserId(userId);
+			tag.setTag_name(tagName);
 			DBUltil.creatPost(conn, post, userId);
 
-			DBUltil.insertTag(conn, tagName);
-			Tag tag = DBUltil.findTag(conn, tagName);
+			DBUltil.insertTag(conn, tag, tagName);
+//			List<Tag> listTag = DBUltil.findTag(conn, tagName);
 			int tagId = tag.getTag_id();
-			Post post2 = DBUltil.findPostByName(conn, postName);
-			int postId = post2.getPostId();
-			DBUltil.insertPostTag(conn, postId, tagId);
+			int postId = post.getPostId();
+//			for (int i = 0; i < listTag.size(); i++) {
+				// Tag tag = DBUltil.findTag(conn, tagName);
+//				int tagId = listTag.get(i).getTag_id();
+				// int tagId = tag.getTag_id();
+
+				DBUltil.insertPostTag(conn, postId, tagId);
+//			}
 			errorString = "Creat Post Success";
 			request.setAttribute("errorString", errorString);
 			request.setAttribute("user", user);
