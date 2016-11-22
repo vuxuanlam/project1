@@ -16,8 +16,7 @@ public class DBUltil {
 
 	public static User findUser(Connection conn, String name, String password, Boolean isActive) throws SQLException {
 
-		String sql = "Select user_name, password, is_active from public.user "
-				+ " where user_name = ? and password= ? and is_active= ?";
+		String sql = "Select * from public.user " + " where user_name = ? and password= ? and is_active= ? ";
 		PreparedStatement pstm = conn.prepareStatement(sql);
 		pstm.setString(1, name);
 		pstm.setString(2, password);
@@ -28,6 +27,7 @@ public class DBUltil {
 			user.setName(name);
 			user.setPassword(password);
 			user.setActivate(isActive);
+			user.setRole(rs.getBoolean("is_role"));
 			return user;
 		}
 		return null;
@@ -190,8 +190,8 @@ public class DBUltil {
 			user.setUserId(rs.getInt("user_id"));
 			user.setName(rs.getString("user_name"));
 			user.setEmail(rs.getString("email"));
-			user.setCreateAt(rs.getDate("create_at"));
-			user.setUpdateAt(rs.getDate("update_at"));
+			user.setCreateAt(rs.getTimestamp("create_at"));
+			user.setUpdateAt(rs.getTimestamp("update_at"));
 			user.setPassword(rs.getString("password"));
 			return user;
 		}
@@ -216,6 +216,25 @@ public class DBUltil {
 			listPost.add(post);
 		}
 		return listPost;
+	}
+
+	public static List<User> viewAllUser(Connection conn) throws SQLException {
+
+		String sql = "Select * from public.user Order By user_id desc ";
+		PreparedStatement pstm = conn.prepareStatement(sql);
+		ResultSet rs = pstm.executeQuery();
+		List<User> listUser = new ArrayList<>();
+		while (rs.next()) {
+			User user = new User();
+			user.setUserId(rs.getInt("user_id"));
+			user.setName(rs.getString("user_name"));
+			user.setEmail(rs.getString("email"));
+			user.setPassword(rs.getString("password"));
+			user.setCreateAt(rs.getTimestamp("create_at"));
+			user.setUpdateAt(rs.getTimestamp("update_at"));
+			listUser.add(user);
+		}
+		return listUser;
 	}
 
 	public static List<UserCommentPost> viewAllPost(Connection conn) throws SQLException {

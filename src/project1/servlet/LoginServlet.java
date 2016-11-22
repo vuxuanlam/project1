@@ -29,42 +29,43 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
 
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		Boolean isActive = true;
 		User user = null;
-		boolean isError = false;
 		String errorString = null;
-
 		try {
 			conn = DBConnect.getConnection();
 			user = DBUltil.findUser(conn, name, password, isActive);
 			if (user == null) {
-				isError = true;
-				errorString = "User Name or password invalid";
+				errorString = "User or password is not invalid ";
+				request.setAttribute("errorString", errorString);
+				request.getRequestDispatcher("/bodycontent/authentication/login.jsp").forward(request, response);
 			}
-		} catch (SQLException | ClassNotFoundException e) {
+			Boolean isRole = user.isRole();
+			if (isRole == false) {
+				request.setAttribute("errorString", errorString);
+				request.setAttribute("user", user);
+				HttpSession session = request.getSession();
+				MyUltil.storeLoginedUser(session, user);
+				response.sendRedirect(request.getContextPath() + "/allPost");
+			} else {
+
+				request.setAttribute("errorString", errorString);
+				request.setAttribute("user", user);
+				HttpSession session = request.getSession();
+				MyUltil.storeLoginedUser(session, user);
+				response.sendRedirect(request.getContextPath() + "/adminManageUser");
+			}
+
+		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-			isError = true;
 			errorString = e.getMessage();
 		} finally {
 			DBConnect.closeQuietly(conn);
-		}
-
-		if (isError) {
-			user = new User();
-			user.setName(name);
-			user.setPassword(password);
-			request.setAttribute("errorString", errorString);
-			request.setAttribute("user", user);
-			request.getRequestDispatcher("/bodycontent/authentication/login.jsp").forward(request, response);
-		} else {
-
-			HttpSession session = request.getSession();
-			MyUltil.storeLoginedUser(session, user);
-			response.sendRedirect(request.getContextPath() + "/allPost");
 		}
 	}
 
@@ -73,5 +74,4 @@ public class LoginServlet extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

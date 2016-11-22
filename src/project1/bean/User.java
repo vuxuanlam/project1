@@ -1,5 +1,6 @@
 package project1.bean;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class User {
@@ -10,17 +11,17 @@ public class User {
 	private String email;
 	private boolean activate;
 	private boolean role;
-	private Date createAt;
-	private Date updateAt;
+	private Timestamp createAt;
+	private Timestamp updateAt;
 
 	public User() {
 	}
 
 	public User(String name, String password, String email) {
-	       this.name = name;
-	       this.password = password;
-	       this.email = email;
-	   }
+		this.name = name;
+		this.password = password;
+		this.email = email;
+	}
 
 	public int getUserId() {
 
@@ -83,23 +84,20 @@ public class User {
 		this.activate = activate;
 	}
 
-	public Date getCreateAt() {
-
+	public Timestamp getCreateAt() {
 		return createAt;
 	}
 
-	public void setCreateAt(Date createAt) {
-
+	public void setCreateAt(Timestamp createAt) {
 		this.createAt = createAt;
 	}
 
-	public Date getUpdateAt() {
-
+	public Timestamp getUpdateAt() {
 		return updateAt;
 	}
 
-	public void setUpdateAt(Date updateAt) {
-
+	public void setUpdateAt(Timestamp updateAt) {
 		this.updateAt = updateAt;
 	}
+
 }
